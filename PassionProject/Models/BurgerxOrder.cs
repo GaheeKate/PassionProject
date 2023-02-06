@@ -30,4 +30,6 @@ namespace PassionProject.Models
         //value in numbers associating a quantity to a pair of burger and order
         public int Quantity { get; set; }
     }
+
+   //public class BurgerDto
 }

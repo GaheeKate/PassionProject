@@ -1,0 +1,14 @@
+﻿@model PassionProject.Models.Burger
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this animal?</h2>
+<a href="/Burger/List">Cancel</a>
+<h2>@Model.Name</h2>
+
+<form action="/Burger/Delete/@Model.Id" method="POST">
+    <input type="submit" value="Confirm Delete" />
+
+</form>

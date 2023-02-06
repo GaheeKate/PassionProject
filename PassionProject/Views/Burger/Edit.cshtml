@@ -1,0 +1,24 @@
+﻿@model PassionProject.Models.Burger
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Animal</h2>
+<form action="/Burger/Update/@Model.Id" method="POST">
+    <div style="display:none;">
+        <input type="text" name="Id" value="@Model.Id" />
+    </div>
+
+    <div>
+        <label>Name:</label> <input type="text" name="Name" value="@Model.Name"/>
+    </div>
+    
+  
+    <div>
+        <input type="submit" value="Update Burger" />
+
+    </div>
+</form>
+
+

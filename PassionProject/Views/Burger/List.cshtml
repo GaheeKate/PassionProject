@@ -1,0 +1,12 @@
+﻿
+@model IEnumerable<PassionProject.Models.Burger>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Burger List</h2>
+@foreach (var burger in Model)
+{
+    <h2><a href="/Burger/Details/@burger.Id">@burger.Name</a> </h2>  
+}
+

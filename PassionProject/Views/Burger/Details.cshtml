@@ -1,0 +1,18 @@
+﻿
+@model PassionProject.Models.Burger
+@{
+    ViewBag.Title = "View";
+}
+
+
+<h2><a href="/Burger/List">Go back to list</a> </h2>
+<br />
+<a href="/Burger/Edit/@Model.Id">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Burger/DeleteConfirm/@Model.Id">Delete</a>
+<h2>Burger Details</h2>
+<div>Burger Id: @Model.Id</div>
+<div>Burger Name:@Model.Name</div>
+
+
+

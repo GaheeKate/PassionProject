@@ -10,7 +10,7 @@ namespace PassionProject.Models
     public class Location
     {
         [Key]
-        public int Id { get; set; }
+        public int Store_Id { get; set; }
 
         public string StoreName { get; set; }
 

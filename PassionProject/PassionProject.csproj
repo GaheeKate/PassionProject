@@ -182,7 +182,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\OrderDataController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\BurgerController.cs" />
+    <Compile Include="Controllers\BurgerDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationDataController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -215,6 +220,14 @@
     <Compile Include="Migrations\202301262327427_explicit joining table.designer.cs">
       <DependentUpon>202301262327427_explicit joining table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202302060502191_update table.cs" />
+    <Compile Include="Migrations\202302060502191_update table.designer.cs">
+      <DependentUpon>202302060502191_update table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202302060514036_restore.cs" />
+    <Compile Include="Migrations\202302060514036_restore.designer.cs">
+      <DependentUpon>202302060514036_restore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BurgerxOrder.cs" />
@@ -235,6 +248,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="jsondata\burger.json" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -282,6 +296,18 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Burger\List.cshtml" />
+    <Content Include="Views\Burger\Details.cshtml" />
+    <Content Include="Views\Burger\New.cshtml" />
+    <Content Include="Views\Burger\Error.cshtml" />
+    <Content Include="Views\Burger\DeleteConfirm.cshtml" />
+    <Content Include="Views\Order\DeleteConfirm.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Order\Error.cshtml" />
+    <Content Include="Views\Order\List.cshtml" />
+    <Content Include="Views\Order\New.cshtml" />
+    <Content Include="Views\Burger\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,6 +346,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301262327427_explicit joining table.resx">
       <DependentUpon>202301262327427_explicit joining table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302060502191_update table.resx">
+      <DependentUpon>202302060502191_update table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302060514036_restore.resx">
+      <DependentUpon>202302060514036_restore.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
