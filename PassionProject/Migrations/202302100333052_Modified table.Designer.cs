@@ -7,13 +7,13 @@ namespace PassionProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class restore : IMigrationMetadata
+    public sealed partial class Modifiedtable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(restore));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Modifiedtable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202302060514036_restore"; }
+            get { return "202302100333052_Modified table"; }
         }
         
         string IMigrationMetadata.Source

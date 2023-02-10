@@ -1,0 +1,19 @@
+﻿
+@model PassionProject.Models.Location
+@{
+    ViewBag.Title = "View";
+}
+
+
+<h2><a href="/Location/List">Go back to list</a> </h2>
+<br />
+<a href="/Location/Edit/@Model.StoreId">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Location/DeleteConfirm/@Model.StoreId">Delete</a>
+<h2>Location Details</h2>
+<div>Location Id: @Model.StoreId</div>
+<div>Location Name:@Model.StoreName</div>
+<div>Location Address:@Model.StoreLocation</div>
+
+
+      

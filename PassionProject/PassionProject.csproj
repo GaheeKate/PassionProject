@@ -182,6 +182,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\OrderDataController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\BurgerController.cs" />
@@ -224,13 +225,24 @@
     <Compile Include="Migrations\202302060502191_update table.designer.cs">
       <DependentUpon>202302060502191_update table.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202302060514036_restore.cs" />
-    <Compile Include="Migrations\202302060514036_restore.designer.cs">
-      <DependentUpon>202302060514036_restore.cs</DependentUpon>
+    <Compile Include="Migrations\202302060545520_update.cs" />
+    <Compile Include="Migrations\202302060545520_update.designer.cs">
+      <DependentUpon>202302060545520_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202302100236497_update1.cs" />
+    <Compile Include="Migrations\202302100236497_update1.designer.cs">
+      <DependentUpon>202302100236497_update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202302100333052_Modified table.cs" />
+    <Compile Include="Migrations\202302100333052_Modified table.designer.cs">
+      <DependentUpon>202302100333052_Modified table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202302100410486_md table2.cs" />
+    <Compile Include="Migrations\202302100410486_md table2.designer.cs">
+      <DependentUpon>202302100410486_md table2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\BurgerxOrder.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -308,6 +320,12 @@
     <Content Include="Views\Order\List.cshtml" />
     <Content Include="Views\Order\New.cshtml" />
     <Content Include="Views\Burger\Edit.cshtml" />
+    <Content Include="Views\Location\DeleteConfirm.cshtml" />
+    <Content Include="Views\Location\Details.cshtml" />
+    <Content Include="Views\Location\Edit.cshtml" />
+    <Content Include="Views\Location\Error.cshtml" />
+    <Content Include="Views\Location\List.cshtml" />
+    <Content Include="Views\Location\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -350,8 +368,17 @@
     <EmbeddedResource Include="Migrations\202302060502191_update table.resx">
       <DependentUpon>202302060502191_update table.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202302060514036_restore.resx">
-      <DependentUpon>202302060514036_restore.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202302060545520_update.resx">
+      <DependentUpon>202302060545520_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302100236497_update1.resx">
+      <DependentUpon>202302100236497_update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302100333052_Modified table.resx">
+      <DependentUpon>202302100333052_Modified table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302100410486_md table2.resx">
+      <DependentUpon>202302100410486_md table2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

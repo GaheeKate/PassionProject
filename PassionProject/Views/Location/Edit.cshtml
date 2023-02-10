@@ -1,0 +1,27 @@
+﻿@model PassionProject.Models.Location
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Location</h2>
+<form action="/Location/Update/@Model.StoreId" method="POST">
+    <div style="display:none;">
+        <input type="text" name="StoreId" value="@Model.StoreId" />
+    </div>
+
+    <div>
+        <label>Name:</label> <input type="text" name="StoreName" value="@Model.StoreName" />
+    </div>
+
+    <div>
+        <label>Address:</label> <input type="text" name="StoreLocation" value="@Model.StoreLocation" />
+    </div>
+
+    <div>
+        <input type="submit" value="Update Location" />
+
+    </div>
+</form>
+
+

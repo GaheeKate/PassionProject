@@ -14,10 +14,20 @@ namespace PassionProject.Models
         public DateTime Date { get; set; }
         //An order belongs to one store
         //A store can have many orders
+
+
+        [ForeignKey("Burger")]
+        public int BurgerId { get; set; }
+        public virtual Burger Burger { get; set; }
+
+
+
         [ForeignKey("Location")]
         public int StoreId { get; set; }
         public virtual Location Location { get; set; }
 
+
+        public int Quantity { get; set; }
     }
 
     public class OrderDto
@@ -25,7 +35,8 @@ namespace PassionProject.Models
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public int StoreId { get; set; }
- 
+        public int BurgerId { get; set; }
+        public int Quantity { get; set; }
 
 
     }

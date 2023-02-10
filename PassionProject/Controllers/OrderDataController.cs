@@ -38,7 +38,10 @@ namespace PassionProject.Controllers
             {
                 Id = a.Id,
                 Date = a.Date,
-                StoreId = a.Location.Store_Id,
+                StoreId = a.StoreId,
+                BurgerId = a.BurgerId,
+                Quantity = a.Quantity,
+
 
             }));
 
@@ -72,7 +75,9 @@ namespace PassionProject.Controllers
             {
                 Id = Order.Id,
                 Date = Order.Date,
-                StoreId = Order.Location.Store_Id,
+                StoreId = Order.StoreId,
+                BurgerId = Order.BurgerId,
+                Quantity = Order.Quantity,
             };
             if (Order == null)
             {

@@ -37,18 +37,18 @@ namespace PassionProject.Controllers
             return Ok(location);
         }
 
-        // POST: api/LocationData/UpdateBurger/5
+        // POST: api/LocationData/UpdateLocation/5
         [ResponseType(typeof(void))]
         [HttpPost]
 
-        public IHttpActionResult UpdateBurger(int id, Location location)
+        public IHttpActionResult UpdateLocation(int id, Location location)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != location.Store_Id)
+            if (id != location.StoreId)
             {
                 return BadRequest();
             }
@@ -87,7 +87,7 @@ namespace PassionProject.Controllers
             db.Locations.Add(location);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = location.Store_Id }, location);
+            return CreatedAtRoute("DefaultApi", new { id = location.StoreId }, location);
         }
 
         // POST: api/LocationData/DeleteLocation/5
@@ -118,7 +118,7 @@ namespace PassionProject.Controllers
 
         private bool LocationExists(int id)
         {
-            return db.Locations.Count(e => e.Store_Id == id) > 0;
+            return db.Locations.Count(e => e.StoreId == id) > 0;
         }
     }
 }

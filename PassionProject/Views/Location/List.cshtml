@@ -1,0 +1,12 @@
+﻿
+@model IEnumerable<PassionProject.Models.Location>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Location List</h2>
+@foreach (var location in Model)
+{
+    <h2><a href="/Location/Details/@location.StoreId">Store ID: @location.StoreId, @location.StoreName</a> </h2>  
+}
+
