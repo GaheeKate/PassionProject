@@ -11,7 +11,7 @@ namespace PassionProject.Models
     {
         [Key]
         public int Id { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         //An order belongs to one store
         //A store can have many orders
 
@@ -33,7 +33,7 @@ namespace PassionProject.Models
     public class OrderDto
     {
         public int Id { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
         public int StoreId { get; set; }
         public int BurgerId { get; set; }
         public int Quantity { get; set; }

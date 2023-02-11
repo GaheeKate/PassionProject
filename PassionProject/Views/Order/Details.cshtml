@@ -1,16 +1,22 @@
 ﻿
-@model PassionProject.Models.OrderDto
+@model PassionProject.Models.ViewModels.DetailsOrder
 @{
     ViewBag.Title = "View";
 }
 
 <h2><a href="/Order/List">Go back to list</a> </h2>
 
+<br />
+<a href="/Order/Edit/@Model.SelectedOrder.Id">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Order/DeleteConfirm/@Model.SelectedOrder.Id">Delete</a>
+
 
 <h2>Order Details</h2>
-<h2>Order Id:@Model.Id</h2>
-<h2>Store Id:@Model.StoreId</h2>
-<h2>Burger Id:@Model.BurgerId</h2>
-<h2>Quantity:@Model.Quantity</h2>
-<h2>Date:@Model.Date</h2>
+<h2>Order Id:@Model.SelectedOrder.Id</h2>
+<h2>Store Id:@Model.SelectedOrder.StoreId</h2>
+<h2>Burger Id:@Model.SelectedOrder.BurgerId</h2>
+<h2>Quantity:@Model.SelectedOrder.Quantity</h2>
+<h2>Date:@Model.SelectedOrder.Date</h2>
+
 

@@ -48,8 +48,7 @@ namespace PassionProject.Controllers
             return Ok(OrderDtos);
         }
 
-
-
+     
 
         /// <summary>
         /// Returns all orders in the system.
@@ -88,7 +87,6 @@ namespace PassionProject.Controllers
         }
 
 
-  
 
 
 

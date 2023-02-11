@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using PassionProject.Models;
+using PassionProject.Models.ViewModels;
 
 
 
@@ -50,18 +51,28 @@ namespace PassionProject.Controllers
         // GET: Order/Details/5
         public ActionResult Details(int id)
         {
+            DetailsOrder ViewModel = new DetailsOrder();
 
             //objective: communicate with our Order data api to retrieve one order
             //curl https://localhost:44320/api/OrderData/FindOrder/5
 
-            
+
             string url = "OrderData/FindOrder/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            OrderDto seletedorder = response.Content.ReadAsAsync<OrderDto>().Result;
+            OrderDto SelectedOrder = response.Content.ReadAsAsync<OrderDto>().Result;
 
-            return View(seletedorder);
-        }
+            ViewModel.SelectedOrder = SelectedOrder;
+
+
+       
+
+
+            return View(ViewModel);    
+
+
+
+    }
 
         public ActionResult Error() {
             return View();
