@@ -5,8 +5,11 @@
 }
 
 <h2>Location List</h2>
+
+<p><a href="/Location/New">Create New Location</a></p>
+
 @foreach (var location in Model)
 {
-    <h2><a href="/Location/Details/@location.StoreId">Store ID: @location.StoreId, @location.StoreName</a> </h2>  
+    <h4><a href="/Location/Details/@location.StoreId">Store ID: @location.StoreId, @location.StoreName</a> </h4>  
 }
 

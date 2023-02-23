@@ -1,18 +1,32 @@
 ﻿
-@model PassionProject.Models.Burger
+
+@model PassionProject.Models.ViewModels.DetailsBurger
+
 @{
     ViewBag.Title = "View";
 }
+<h2>@Model.SelectedBurger.Name</h2>
+<nav>
+    <ul>
+        <li><a href="/Burger/List">Go back to list</a></li>
+        <li><a href="/Burger/Edit/@Model.SelectedBurger.Id">Update</a></li>
+        <li><a style="color:#ab2020;" href="/Burger/DeleteConfirm/@Model.SelectedBurger.Id">Delete</a></li>
+    </ul>
+</nav>
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <div>Burger Name: @Model.SelectedBurger.Name</div>
+        <div>Burger Price: @Model.SelectedBurger.BurgerPrice</div>
+    </div>
 
 
-<h2><a href="/Burger/List">Go back to list</a> </h2>
-<br />
-<a href="/Burger/Edit/@Model.Id">Update</a>
-<br />
-<a style="color:#ab2020;" href="/Burger/DeleteConfirm/@Model.Id">Delete</a>
-<h2>Burger Details</h2>
-<div>Burger Id: @Model.Id</div>
-<div>Burger Name:@Model.Name</div>
+    <div class="col-md-6 col-sm-12">
+        <h4>Recent Orders:</h4>
+        @foreach (var orders in Model.Orders)
+        {
+            <a href="/Order/Details/@orders.Id">Order Id: @orders.Id</a><br />
 
-
+        }
+    </div>
+</div>
 

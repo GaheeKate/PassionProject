@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
+using System.Net.Http;
+using System.Diagnostics;
 using PassionProject.Models;
+using PassionProject.Models.ViewModels;
+using System.Web.Script.Serialization;
 
 
 
@@ -21,49 +22,81 @@ namespace PassionProject.Controllers
         private static readonly HttpClient client;
         private JavaScriptSerializer jss = new JavaScriptSerializer();
 
+
         static BurgerController()
         {
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:44320/api/");
         }
 
+
+
         // GET: Burger/List
         public ActionResult List()
         {   //objective: communicate with our Burger data api to retrieve a list of Burgers
             //curl https://localhost:44320/api/BurgerData/ListBurgers
 
-       
+            int maxListCount = 3;
+            int pageNum = 1;
+            int totalCount = 1;
+
+            if (Request.QueryString["page"] != null)
+                pageNum = Convert.ToInt32(Request.QueryString["page"]);
+
+
             string url = "BurgerData/ListBurgers";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            Debug.WriteLine("The response code is ");
-            Debug.WriteLine(response.StatusCode);
+            IEnumerable<BurgerDto> burgers = response.Content.ReadAsAsync<IEnumerable<BurgerDto>>().Result;
 
-            IEnumerable<Burger> burgers = response.Content.ReadAsAsync<IEnumerable<Burger>>().Result;
-            Debug.WriteLine("The Number of burgers are ");
-            Debug.WriteLine(burgers.Count());
+
+            totalCount = burgers.Count();
+
+            burgers = burgers.OrderBy(x => x.Id)
+                   .Skip((pageNum - 1) * maxListCount)
+                   .Take(maxListCount).ToList();
+
+        
+
+            ViewBag.Page = pageNum;
+            ViewBag.TotalCount = totalCount;
+            ViewBag.MaxListCount = maxListCount;
 
 
             return View(burgers);
         }
 
+
+
+
+
+
         // GET: Burger/Details/5
         public ActionResult Details(int id)
         {
 
+            DetailsBurger ViewModel = new DetailsBurger();
+
             //objective: communicate with our Burger data api to retrieve one burger
             //curl https://localhost:44320/api/BurgerData/FindBurger/5
 
-            
             string url = "BurgerData/FindBurger/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            Debug.WriteLine("The response code is ");
-            Debug.WriteLine(response.StatusCode);
+            BurgerDto SelectedBurger = response.Content.ReadAsAsync<BurgerDto>().Result;
+            ViewModel.SelectedBurger = SelectedBurger;
 
-            Burger seletedburger = response.Content.ReadAsAsync<Burger>().Result;
+            //Get Orders for this burger 
+            url = "OrderData/ListOrdersForBurger/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<OrderDto> Orders = response.Content.ReadAsAsync<IEnumerable<OrderDto>>().Result;
 
-            return View(seletedburger);
+            ViewModel.Orders = Orders;
+
+
+            return View(ViewModel);
+
+
         }
 
         public ActionResult Error() {
@@ -117,7 +150,7 @@ namespace PassionProject.Controllers
             string url = "BurgerData/FindBurger/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            Burger seletedburger = response.Content.ReadAsAsync<Burger>().Result;
+            BurgerDto seletedburger = response.Content.ReadAsAsync<BurgerDto>().Result;
 
             return View(seletedburger);
 
@@ -154,7 +187,7 @@ namespace PassionProject.Controllers
             string url = "BurgerData/FindBurger/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            Burger seletedburger = response.Content.ReadAsAsync<Burger>().Result;
+            BurgerDto seletedburger = response.Content.ReadAsAsync<BurgerDto>().Result;
 
             return View(seletedburger);
         }

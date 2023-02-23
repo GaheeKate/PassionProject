@@ -35,6 +35,8 @@ namespace PassionProject.Models
 
         public DbSet<Location> Locations { get; set; }
 
+        public DbSet<BurgerxOrder> BurgerxOrders { get; set; }
+
 
         public static ApplicationDbContext Create()
         {

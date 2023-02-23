@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Web;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -11,6 +13,7 @@ using System.Web.Http.Description;
 using PassionProject.Models;
 using System.Diagnostics;
 
+using Microsoft.AspNet.Identity;
 namespace PassionProject.Controllers
 {
     public class OrderDataController : ApiController
@@ -27,28 +30,34 @@ namespace PassionProject.Controllers
         /// <example>
         /// GET: api/OrderData/ListOrders
         /// </example>
+
+
         [HttpGet]
         [ResponseType(typeof(OrderDto))]
+
         public IHttpActionResult ListOrders()
         {
-            List<Order> Orders = db.Orders.ToList();
+
+
+            List<Order> Orders = db.Orders.ToList(); ;
             List<OrderDto> OrderDtos = new List<OrderDto>();
 
-            Orders.ForEach(a => OrderDtos.Add(new OrderDto()
+            Orders.ForEach(b => OrderDtos.Add(new OrderDto()
             {
-                Id = a.Id,
-                Date = a.Date,
-                StoreId = a.StoreId,
-                BurgerId = a.BurgerId,
-                Quantity = a.Quantity,
-
+                Id = b.Id,
+                Date = b.Date,
+                StoreId = b.StoreId
 
             }));
 
             return Ok(OrderDtos);
         }
 
-     
+
+
+
+
+
 
         /// <summary>
         /// Returns all orders in the system.
@@ -75,8 +84,7 @@ namespace PassionProject.Controllers
                 Id = Order.Id,
                 Date = Order.Date,
                 StoreId = Order.StoreId,
-                BurgerId = Order.BurgerId,
-                Quantity = Order.Quantity,
+ 
             };
             if (Order == null)
             {
@@ -85,13 +93,6 @@ namespace PassionProject.Controllers
 
             return Ok(OrderDto);
         }
-
-
-
-
-
-
-
 
 
 
@@ -165,17 +166,38 @@ namespace PassionProject.Controllers
         /// </example>
         [ResponseType(typeof(Order))]
         [HttpPost]
-        public IHttpActionResult AddOrder(Order order)
+        public IHttpActionResult AddOrder(Order Order)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Orders.Add(order);
+
+
+            db.Orders.Add(Order);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = order.Id }, order);
+
+            //add one of each burger at 0 qty
+            List<Burger> burgers = db.Burgers.ToList();
+            burgers.ForEach(t =>
+                db.BurgerxOrders.Add(
+                    new BurgerxOrder
+                    {
+                        BurgerId = t.Id,
+                        OrderId = Order.Id,
+                        Quantity = 0,
+    
+                    }
+                )
+            );
+
+
+            db.SaveChanges();
+
+
+            return CreatedAtRoute("DefaultApi", new { id = Order.Id }, Order);
         }
 
         /// <summary>
@@ -220,5 +242,44 @@ namespace PassionProject.Controllers
         {
             return db.Orders.Count(e => e.Id == id) > 0;
         }
+
+
+
+        /// <summary>
+        /// Gathers information about all Orders related to a particular Burger ID
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: Orders in the database
+        /// </returns>
+        /// <param name="id">Ticket ID.</param>
+        /// <example>
+        /// GET: api/OrderData/ListOrdersForBurger/3
+        /// </example>
+        [HttpGet]
+        [ResponseType(typeof(BurgerxOrderDto))]
+        public IHttpActionResult ListOrdersForBurger(int id)
+        {
+
+            List<BurgerxOrder> BxTs = db.BurgerxOrders.Where(bxt => bxt.BurgerId == id).Include(bxt => bxt.Order).ToList();
+
+            List<OrderDto> OrderDtos = new List<OrderDto>();
+
+            BxTs.ForEach(bxt => OrderDtos.Add(new OrderDto()
+            {
+                Id = bxt.Order.Id,
+                Date = bxt.Order.Date,
+                StoreId = bxt.Order.StoreId,
+               
+            }));
+
+            return Ok(OrderDtos);
+        }
+
+
+
+
     }
+
+
 }

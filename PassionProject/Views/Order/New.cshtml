@@ -3,17 +3,16 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Report total orders by store</h2>
+<h2>Create order(sales)</h2>
 <form action="/Order/Create" method="POST">
     <div>
-        <label>Date:</label> <input type="date" name="Date" />
         <label>Store:</label> <input type="number" name="StoreId" />
-        <label>Burger:</label> <input type="number" name="BurgerId" />
-        <label>Quantity:</label> <input type="number" name="Quantity" />
+    </div>
+    <div>
+        <label>Date:</label> <input type="datetime" value="@System.DateTime.Now.ToString("yyyy-MM-dd")" name="date" />
     </div>
     <div>
         <input type="submit" value="Add Order" />
 
     </div>
 </form>
- 

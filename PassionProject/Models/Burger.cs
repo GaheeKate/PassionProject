@@ -10,13 +10,20 @@ namespace PassionProject.Models
     {
         [Key]
         public int Id { get; set; }
-
         public string Name { get; set; }
-
-
-
+        //current price of this burger
+        public decimal BurgerPrice { get; set; }
 
     }
+
+    public class BurgerDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        //current price of this burger
+        public decimal BurgerPrice { get; set; }
+    }
+
 
 
 

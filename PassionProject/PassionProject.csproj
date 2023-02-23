@@ -221,37 +221,39 @@
     <Compile Include="Migrations\202301262327427_explicit joining table.designer.cs">
       <DependentUpon>202301262327427_explicit joining table.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202302060502191_update table.cs" />
-    <Compile Include="Migrations\202302060502191_update table.designer.cs">
-      <DependentUpon>202302060502191_update table.cs</DependentUpon>
+    <Compile Include="Migrations\202302181610014_r.cs" />
+    <Compile Include="Migrations\202302181610014_r.designer.cs">
+      <DependentUpon>202302181610014_r.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202302060545520_update.cs" />
-    <Compile Include="Migrations\202302060545520_update.designer.cs">
-      <DependentUpon>202302060545520_update.cs</DependentUpon>
+    <Compile Include="Migrations\202302181615129_rt.cs" />
+    <Compile Include="Migrations\202302181615129_rt.designer.cs">
+      <DependentUpon>202302181615129_rt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202302100236497_update1.cs" />
-    <Compile Include="Migrations\202302100236497_update1.designer.cs">
-      <DependentUpon>202302100236497_update1.cs</DependentUpon>
+    <Compile Include="Migrations\202302181630589_burger_table_update.cs" />
+    <Compile Include="Migrations\202302181630589_burger_table_update.designer.cs">
+      <DependentUpon>202302181630589_burger_table_update.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202302100333052_Modified table.cs" />
-    <Compile Include="Migrations\202302100333052_Modified table.designer.cs">
-      <DependentUpon>202302100333052_Modified table.cs</DependentUpon>
+    <Compile Include="Migrations\202302181735049_table_update.cs" />
+    <Compile Include="Migrations\202302181735049_table_update.designer.cs">
+      <DependentUpon>202302181735049_table_update.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202302100410486_md table2.cs" />
-    <Compile Include="Migrations\202302100410486_md table2.designer.cs">
-      <DependentUpon>202302100410486_md table2.cs</DependentUpon>
+    <Compile Include="Migrations\202302190548011_pricejoin.cs" />
+    <Compile Include="Migrations\202302190548011_pricejoin.designer.cs">
+      <DependentUpon>202302190548011_pricejoin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202302102352570_null.cs" />
-    <Compile Include="Migrations\202302102352570_null.designer.cs">
-      <DependentUpon>202302102352570_null.cs</DependentUpon>
+    <Compile Include="Migrations\202302231825502_excludenullable.cs" />
+    <Compile Include="Migrations\202302231825502_excludenullable.designer.cs">
+      <DependentUpon>202302231825502_excludenullable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BurgerxOrder.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Burger.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\ViewModels\DetailsBurger.cs" />
     <Compile Include="Models\ViewModels\DetailsOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -370,23 +372,23 @@
     <EmbeddedResource Include="Migrations\202301262327427_explicit joining table.resx">
       <DependentUpon>202301262327427_explicit joining table.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202302060502191_update table.resx">
-      <DependentUpon>202302060502191_update table.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202302181610014_r.resx">
+      <DependentUpon>202302181610014_r.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202302060545520_update.resx">
-      <DependentUpon>202302060545520_update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202302181615129_rt.resx">
+      <DependentUpon>202302181615129_rt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202302100236497_update1.resx">
-      <DependentUpon>202302100236497_update1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202302181630589_burger_table_update.resx">
+      <DependentUpon>202302181630589_burger_table_update.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202302100333052_Modified table.resx">
-      <DependentUpon>202302100333052_Modified table.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202302181735049_table_update.resx">
+      <DependentUpon>202302181735049_table_update.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202302100410486_md table2.resx">
-      <DependentUpon>202302100410486_md table2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202302190548011_pricejoin.resx">
+      <DependentUpon>202302190548011_pricejoin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202302102352570_null.resx">
-      <DependentUpon>202302102352570_null.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202302231825502_excludenullable.resx">
+      <DependentUpon>202302231825502_excludenullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

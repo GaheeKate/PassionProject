@@ -9,6 +9,9 @@ namespace PassionProject.Models.ViewModels
     {
 
         public OrderDto SelectedOrder { get; set; }
-        public IEnumerable<Burger> KeptBurgers { get; set; }
+
+        public IEnumerable<BurgerxOrderDto> OrderedBurgers { get; set; }
+
+
     }
 }

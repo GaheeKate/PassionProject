@@ -144,16 +144,19 @@ namespace PassionProject.Controllers
 
         }
 
-        // GET: Location/Delete/5
+        // GET: Location/DeleteConfirm/5
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "LocationData/FindLocation/" + id;
+            string url = "LocationData/FindLocations/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             Location seletedlocation = response.Content.ReadAsAsync<Location>().Result;
 
             return View(seletedlocation);
         }
+
+
+
 
         // POST: Location/Delete/5
         [HttpPost]

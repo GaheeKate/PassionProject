@@ -1,35 +1,29 @@
-﻿
-@model PassionProject.Models.OrderDto
+﻿@model PassionProject.Models.OrderDto
 
-@{
-    ViewBag.Title = "Edit";
-}
+    @{
+        ViewBag.Title = "Edit";
+    }
 
-<h2>Update Order</h2>
-<form action="/Order/Update/@Model.Id" method="POST">
-    <div style="display:none;">
-        <input type="text" name="Date" value="@Model.Id" />
-    </div>
-    <div>
-        <label>Date:</label> <input type="date" name="Date" value="@Model.Date" />
-    </div>
+    <h2>Update Order</h2>
+    <form action="/Order/Update/@Model.Id" method="POST">
+        <div style="display:none;">
+            <input type="text" name="number" value="@Model.Id" />
+        </div>
+        <div>
+            <label>Date:</label> <input type="datetime" name="Date" value="@Model.Date.ToString("yyyy-MM-dd")" />
+        </div>
 
-    <div>
-        <label>StoreId:</label> <input type="number" name="StoreId" value="@Model.StoreId" />
-    </div>
+        <div>
+            <label>StoreId:</label> <input type="number" name="StoreId" value="@Model.StoreId" />
+        </div>
 
-    <div>
-        <label>BurgerId:</label> <input type="number" name="BurgerId" value="@Model.BurgerId" />
-    </div>
 
-    <div>
-        <label>Quantity:</label> <input type="number" name="Quantity" value="@Model.Quantity" />
-    </div>
+        <div>
+            <input type="submit" value="Update Order" />
 
-    <div>
-        <input type="submit" value="Update Order" />
+        </div>
+    </form>
 
-    </div>
-</form>
+
 
 

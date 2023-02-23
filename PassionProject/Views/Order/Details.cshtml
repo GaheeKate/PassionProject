@@ -1,22 +1,67 @@
 ﻿
 @model PassionProject.Models.ViewModels.DetailsOrder
+
+
+
 @{
     ViewBag.Title = "View";
 }
 
-<h2><a href="/Order/List">Go back to list</a> </h2>
+<h2>Order Id: @Model.SelectedOrder.Id</h2>
+<nav>
+    <ul>
+        <li><a href="/Order/List">Go back to list</a></li>
+        <li><a href="/Order/Edit/@Model.SelectedOrder.Id">Update</a></li>
+        <li><a style="color:#ab2020;" href="/Order/DeleteConfirm/@Model.SelectedOrder.Id">Delete</a></li>
+    </ul>
+</nav>
+<div class="row">
+    <div class="col-md-6 col-sm-12">
+        <div style="font-size:20px; font-weight:bold;">Store Id:<a href="/Location/Details/@Model.SelectedOrder.StoreId">  @Model.SelectedOrder.StoreId </a> </div>
+        <div>Date: @Model.SelectedOrder.Date.ToString("yyyy-MM-dd")</div>
+    </div>
 
-<br />
-<a href="/Order/Edit/@Model.SelectedOrder.Id">Update</a>
-<br />
-<a style="color:#ab2020;" href="/Order/DeleteConfirm/@Model.SelectedOrder.Id">Delete</a>
+
+    <div class="col-md-6 col-sm-12">
+        <h4>Ordered Burgers:</h4>
+        @{
+            decimal subtotal = 0;
+
+        }
+        @foreach (var burger in Model.OrderedBurgers)
+        {
 
 
-<h2>Order Details</h2>
-<h2>Order Id:@Model.SelectedOrder.Id</h2>
-<h2>Store Id:@Model.SelectedOrder.StoreId</h2>
-<h2>Burger Id:@Model.SelectedOrder.BurgerId</h2>
-<h2>Quantity:@Model.SelectedOrder.Quantity</h2>
-<h2>Date:@Model.SelectedOrder.Date</h2>
+            subtotal += burger.Quantity * burger.BurgerPrice;
+
+            <div class="ledgeritem">
+                <h4>Burger Id:<a href="/Burger/Details/@burger.BurgerId">  @burger.BurgerId </a> </h4>
+                <p>Quantity: @burger.Quantity</p>
+                <form action="/Order/Associate" method="POST">
+                    <input class="hidden" name="BurgerId" value="@burger.BurgerId" />
+                    <input class="hidden" name="OrderId" value="@burger.OrderId" />
+                    <input class="hidden" name="Qty" value="@(burger.Quantity+1)" />
+                    <input type="submit" value="+" />
+                </form>
+                &nbsp;
+                <form action="/Order/Associate" method="POST">
+                    <input class="hidden" name="BurgerId" value="@burger.BurgerId" />
+                    <input class="hidden" name="OrderId" value="@burger.OrderId" />
+                    <input class="hidden" name="Qty" value="@(burger.Quantity-1)" />
+                    <input type="submit" value="-" />
+                </form>
+                &nbsp;
+
+            </div>
+
+        }
+        <hr />
+        <div style="color:red; font-size:24px;">Total sales: @subtotal </div>
+    </div>
 
 
+
+
+
+
+</div>

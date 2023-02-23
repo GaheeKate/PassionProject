@@ -37,12 +37,28 @@ namespace PassionProject.Controllers
             string url = "OrderData/ListOrders";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            Debug.WriteLine("The response code is ");
-            Debug.WriteLine(response.StatusCode);
+            int maxListCount = 3;
+            int pageNum = 1;
+            int totalCount = 1;
+
+            if (Request.QueryString["page"] != null)
+                pageNum = Convert.ToInt32(Request.QueryString["page"]);
 
             IEnumerable<OrderDto> orders = response.Content.ReadAsAsync<IEnumerable<OrderDto>>().Result;
-            Debug.WriteLine("The Number of orders are ");
-            Debug.WriteLine(orders.Count());
+
+            totalCount = orders.Count();
+
+            orders = orders.OrderBy(x => x.Id)
+                   .Skip((pageNum - 1) * maxListCount)
+                   .Take(maxListCount).ToList();
+
+
+
+            ViewBag.Page = pageNum;
+            ViewBag.TotalCount = totalCount;
+            ViewBag.MaxListCount = maxListCount;
+
+
 
 
             return View(orders);
@@ -65,7 +81,15 @@ namespace PassionProject.Controllers
             ViewModel.SelectedOrder = SelectedOrder;
 
 
-       
+
+            //show associated burgers with this order
+            url = "BurgerData/ListBurgersForOrder/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<BurgerxOrderDto> Burgers = response.Content.ReadAsAsync<IEnumerable<BurgerxOrderDto>>().Result;
+
+            ViewModel.OrderedBurgers = Burgers;
+
+
 
 
             return View(ViewModel);    
@@ -78,6 +102,55 @@ namespace PassionProject.Controllers
             return View();
 
         }
+
+
+
+
+
+
+        //POST: Booking/Associate
+        [HttpPost]
+        public ActionResult Associate(int BurgerID, int OrderID, int Qty)
+        {
+   
+            //call our api to associate Order with burger
+            string url = "BurgerData/AssociateBurgerWithOrder/" + BurgerID + "/" + OrderID + "/" + Qty;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Details/" + OrderID);
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+        }
+
+
+        //Get: Booking/UnAssociate/{BxTID}?BookingID={BookingID}
+        //Deprecated. Use Associate instead to change quantity
+        [HttpGet]
+
+        public ActionResult UnAssociate(int id, int OrderId)
+        {
+ 
+
+
+            //call our api to remove a booking x ticket
+            string url = "BurgerData/AssociateBurgerWithOrder/" + id;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            return RedirectToAction("Details/" + OrderId);
+        }
+
+
+
+
 
         // GET: Order/New
         public ActionResult New()
@@ -128,6 +201,8 @@ namespace PassionProject.Controllers
             OrderDto seletedorder = response.Content.ReadAsAsync<OrderDto>().Result;
 
             return View(seletedorder);
+
+
 
         }
 

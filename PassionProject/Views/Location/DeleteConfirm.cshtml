@@ -6,9 +6,11 @@
 
 <h2>Are you sure you want to delete this location?</h2>
 <a href="/Location/List">Cancel</a>
-<h2>@Model.StoreName</h2>
+<h2>Seleted Store Id: @Model.StoreId</h2>
 
 <form action="/Location/Delete/@Model.StoreId" method="POST">
     <input type="submit" value="Confirm Delete" />
 
 </form>
+
+

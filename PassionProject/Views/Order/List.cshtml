@@ -1,16 +1,64 @@
 ﻿
 @model IEnumerable<PassionProject.Models.OrderDto>
+
 @{
     ViewBag.Title = "List";
+    int pageNum = ViewBag.Page ?? 1; //if null put 1
+    int totalCount = ViewBag.TotalCount ?? 0;
+    int MaxListCount = ViewBag.MaxListCount ?? 1;
+    int TotalPageCount = Convert.ToInt32(Math.Ceiling((double)totalCount / MaxListCount));
 }
 
+<h2>Order List</h2>
 
-<h2>Order Lists</h2>
-<a href="/Order/New">New Order</a>
-@foreach (var order in Model)
-{
-    <h2><a href="/Order/Details/@order.Id">Id:@order.Id StoreId:@order.StoreId </a> </h2>
-    <div>Date:@order.Date </div>
+<p>
+    @Html.ActionLink("Create New", "New")
+</p>
 
 
-}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoreId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+
+    </tr>
+
+
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => order.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.StoreId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => order.Date)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = order.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = order.Id }) |
+                @Html.ActionLink("Delete", "DeleteConfirm", new { id = order.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="text-center">
+    <div class="btn-group">
+        @for (int i = 1; i <= TotalPageCount; i++)
+        {
+            <a class="btn btn-@(pageNum == i ? "primary" : "default")" href="?page=@i">@i</a>
+        }
+    </div>
+</div>
