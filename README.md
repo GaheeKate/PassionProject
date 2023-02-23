@@ -9,7 +9,7 @@ There are three tables in my system: Order, Burger, and Location. Each order can
 ### Order List
 The Order list displays the Order ID, Store ID, and Order date, as well as buttons for editing details and deleting the order. For clarity, I set it to show a maximum of three rows per page.
 
-If you click on the details button for a specific order, you will see a list of the burgers that were ordered, the quantity of each burger, and the total sales for that store on that day. You can even change the quantity of each burger by clicking on the plus or minus button, and the updated total sales will be displayed below.
+If you click on the details button for a specific order, you will see a list of the burgers that were ordered, the quantity of each burger, and the total sales for that store on that day. You can change the quantity of each burger by clicking on the plus or minus button, and the updated total sales will be displayed below.
 
 You can also click on the Burger ID to see the details of that specific burger.
 
@@ -19,7 +19,7 @@ On the Order page, you can create new orders by setting the Store ID and Order d
 ### Burger List
 The Burger list table has the same layout as the Order page. If you click on the Burger details, you will see the recent order list for that specific burger, as well as the burger name and price. On this page, users can update the burger name or price, or delete the burger.
 
-To create a new burger, click on the Create New button and set the name and price for the burger. Once you have done so, the burger will be successfully added. you can delete it by clicking on the Confirm button.
+To create a new burger, click on the Create New button and set the name and price for the burger. Once you have done so, the burger will be added. You can delete it by clicking on the Confirm button.
 
 ### Location Table
 User can see a list of locations in the Location table, and by clicking on them, user can see more details about each location. User can also manipulate the information by using the Update or Delete button.
